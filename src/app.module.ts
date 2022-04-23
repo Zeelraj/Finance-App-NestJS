@@ -9,6 +9,8 @@ import { LoggerMiddleware } from './utils/logger.middleware';
 import { LogsModule } from './logs/logs.module';
 import DatabaseLogger from './logs/databaseLogger';
 import { User } from './users/users.entity';
+import { Finance } from './finances/finances.entity';
+import Log from './logs/log.entity';
 
 @Module({
   imports: [
@@ -21,7 +23,7 @@ import { User } from './users/users.entity';
       ssl: {
         rejectUnauthorized: false,
       },
-      entities: [User],
+      entities: [User, Finance, Log],
       synchronize: true, // This for development
       autoLoadEntities: true,
     }),
