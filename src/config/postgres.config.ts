@@ -1,5 +1,8 @@
+import { Finance } from './../finances/finances.entity';
+import { User } from 'src/users/users.entity';
 import DatabaseLogger from 'src/logs/databaseLogger';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import Log from 'src/logs/log.entity';
 
 export const pgConfig: TypeOrmModuleOptions = {
   type: 'postgres',
@@ -8,8 +11,7 @@ export const pgConfig: TypeOrmModuleOptions = {
   ssl: {
     rejectUnauthorized: false,
   },
-  entities: ['dist/src/modules/*.entity.js'],
-  synchronize: true,
-  migrations: ['dist/src/db/migrations.js'],
-  cli: { migrationsDir: 'src/db/migrations' },
+  entities: [User, Finance, Log],
+  synchronize: true, // This for development
+  autoLoadEntities: true,
 };
