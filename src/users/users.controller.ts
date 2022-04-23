@@ -218,6 +218,10 @@ export class UsersController {
       json: true,
     });
 
+    if (!token) {
+      throw new UnauthorizedException('Please, Login First..!!');
+    }
+
     const user = await this.userService.getUser(token['contact']);
 
     return {
@@ -232,6 +236,10 @@ export class UsersController {
     const token = this.jwtService.decode(request.cookies['token'], {
       json: true,
     });
+
+    if (!token) {
+      throw new UnauthorizedException('Please, Login First..!!');
+    }
 
     const user = await this.userService.getUser(token['contact']);
 
@@ -259,6 +267,10 @@ export class UsersController {
       json: true,
     });
 
+    if (!token) {
+      throw new UnauthorizedException('Please, Login First..!!');
+    }
+
     const user = await this.userService.getUser(token['contact']);
 
     const isUserDeleted = await this.userService.deleteUser(user.contact);
@@ -279,6 +291,10 @@ export class UsersController {
     const token = this.jwtService.decode(request.cookies['token'], {
       json: true,
     });
+
+    if (!token) {
+      throw new UnauthorizedException('Please, Login First..!!');
+    }
 
     const user = await this.userService.getUser(token['contact']);
 
@@ -303,6 +319,10 @@ export class UsersController {
     const token = this.jwtService.decode(request.cookies['token'], {
       json: true,
     });
+
+    if (!token) {
+      throw new UnauthorizedException('Please, Login First..!!');
+    }
 
     const user = await this.userService.getUser(token['contact']);
 

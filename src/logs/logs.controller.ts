@@ -34,6 +34,10 @@ export class LogsController {
       json: true,
     });
 
+    if (!token) {
+      throw new UnauthorizedException('Please, Login First..!!');
+    }
+
     const user = await this.userService.getUser(token['contact']);
 
     if (!user) {

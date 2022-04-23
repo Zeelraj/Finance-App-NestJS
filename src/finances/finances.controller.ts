@@ -37,6 +37,10 @@ export class FinancesController {
       json: true,
     });
 
+    if (!token) {
+      throw new UnauthorizedException('Please, Login First..!!');
+    }
+
     const user = await this.userService.getUser(token['contact']);
 
     if (!user) {
@@ -76,6 +80,10 @@ export class FinancesController {
     const token = this.jwtService.decode(request.cookies['token'], {
       json: true,
     });
+
+    if (!token) {
+      throw new UnauthorizedException('Please, Login First..!!');
+    }
 
     const user = await this.userService.getUser(token['contact']);
 
@@ -126,6 +134,10 @@ export class FinancesController {
     const token = this.jwtService.decode(request.cookies['token'], {
       json: true,
     });
+
+    if (!token) {
+      throw new UnauthorizedException('Please, Login First..!!');
+    }
 
     const user = await this.userService.getUser(token['contact']);
 
@@ -191,6 +203,10 @@ export class FinancesController {
       json: true,
     });
 
+    if (!token) {
+      throw new UnauthorizedException('Please, Login First..!!');
+    }
+
     const user = await this.userService.getUser(token['contact']);
 
     if (!user) {
@@ -222,6 +238,10 @@ export class FinancesController {
     const token = this.jwtService.decode(request.cookies['token'], {
       json: true,
     });
+
+    if (!token) {
+      throw new UnauthorizedException('Please, Login First..!!');
+    }
 
     let user = await this.userService.getUser(token['contact']);
 
