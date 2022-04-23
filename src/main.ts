@@ -8,7 +8,7 @@ import {
 } from '@nestjs/swagger';
 import CustomLogger from './logs/customLogger';
 
-const PORT = process.env.PORT || 6000;
+const PORT = parseInt(process.env.PORT) || 3000;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -34,7 +34,7 @@ async function bootstrap() {
 
   app.useLogger(app.get(CustomLogger));
 
-  await app.listen(parseInt(process.env.PORT) || 3000);
+  await app.listen(PORT);
 }
 
 bootstrap();
