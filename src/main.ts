@@ -34,7 +34,7 @@ async function bootstrap() {
 
   app.useLogger(app.get(CustomLogger));
 
-  await app.listen(PORT);
+  await app.listen(parseInt(process.env.PORT) || 3000);
 }
 
 bootstrap();
