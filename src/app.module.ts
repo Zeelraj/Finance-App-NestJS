@@ -17,7 +17,7 @@ import { User } from './users/users.entity';
     TypeOrmModule.forRoot({
       type: 'postgres',
       logger: new DatabaseLogger(),
-      url: process.env.DB_URI,
+      url: process.env.DATABASE_URL,
       ssl: {
         rejectUnauthorized: false,
       },
