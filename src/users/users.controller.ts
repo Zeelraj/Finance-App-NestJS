@@ -211,6 +211,27 @@ export class UsersController {
     };
   }
 
+  @Get('logout')
+  @HttpCode(200)
+  async logoutUser(@Req() request: Request, @Res() response: Response) {
+    const token = this.jwtService.decode(request.cookies['token'], {
+      json: true,
+    });
+
+    if (!token) {
+      throw new UnauthorizedException('Please, Login First..!!');
+    }
+
+    response.cookie('token', null, {
+      httpOnly: true,
+      expires: new Date(Date.now() + process.env.COOKIE_EXPIRY),
+    });
+
+    return {
+      success: true,
+    };
+  }
+
   @Get('fetch')
   @HttpCode(200)
   async getUser(@Req() request: Request) {
